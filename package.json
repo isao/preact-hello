@@ -5,6 +5,7 @@
   "main": "index.js",
   "module": "dist/bundle.js",
   "scripts": {
+    "clean": "rm -rf dist/*",
     "prebuild": "tsc --noEmit",
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
