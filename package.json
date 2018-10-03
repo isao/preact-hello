@@ -5,16 +5,20 @@
   "main": "index.js",
   "module": "dist/bundle.js",
   "scripts": {
+    "prebuild": "tsc --noEmit",
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Isao Yagi <isao.yagi@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "preact": "^8.3.1",
     "rollup": "^0.66.2",
+    "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-typescript": "^1.0.0",
     "tslib": "^1.9.3",
     "typescript": "^3.1.1"
+  },
+  "dependencies": {
+    "preact": "^8.3.1"
   }
 }
