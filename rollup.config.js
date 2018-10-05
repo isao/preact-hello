@@ -1,15 +1,14 @@
-import typescript from 'rollup-plugin-typescript'
 import resolve from 'rollup-plugin-node-resolve'
+import {name} from './package.json'
 
 export default {
-  input: './src/app.tsx',
-  output: {
-      format: 'esm',
-      file: 'dist/bundle.js', // Should match package.json module field.
-  },
-  plugins: [
-    typescript(),
-    resolve(),
-  ],
-  //external: ['preact'],
+    input: './dist/babel/app.js',
+    output: {
+        file: `dist/${name}.js`,
+        format: 'esm',
+        sourcemap: true,
+    },
+    plugins: [
+        resolve(),
+    ],
 }

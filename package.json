@@ -5,21 +5,54 @@
   "main": "index.js",
   "module": "dist/bundle.js",
   "scripts": {
+    "series": "set -e; foo() for i in $@; do npm run $i; done; foo",
     "clean": "rm -rf dist/*",
-    "prebuild": "tsc --noEmit",
-    "build": "rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tsc": "tsc",
+    "babel": "babel --out-dir dist/babel dist/tsc",
+    "rollup": "rollup -c",
+    "build": "npm run series -- clean tsc babel rollup"
   },
   "author": "Isao Yagi <isao.yagi@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
     "rollup": "^0.66.2",
+    "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-typescript": "^1.0.0",
     "tslib": "^1.9.3",
     "typescript": "^3.1.1"
   },
   "dependencies": {
+    "core-js": "^2.5.7",
     "preact": "^8.3.1"
-  }
+  },
+  "babel": {
+    "inputSourceMap": true,
+    "sourceMaps": true,
+    "ignore": [
+      "node_modules"
+    ],
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "debug": true,
+          "loose": true,
+          "modules": false,
+          "useBuiltIns": "entry"
+        }
+      ]
+    ],
+    "plugins": []
+  },
+  "browserslist": [
+    "Chrome 68",
+    "Edge 17",
+    "Explorer 11",
+    "Firefox 61",
+    "iOS 11",
+    "Safari 11"
+  ]
 }
