@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "module": "dist/bundle.js",
+  "private": true,
   "scripts": {
     "series": "set -e; foo() for i in $@; do npm run $i; done; foo",
     "clean": "rm -rf dist/*",
-    "tsc": "tsc",
-    "babel": "babel --out-dir dist/babel dist/tsc",
-    "rollup": "rollup -c",
-    "build": "npm run series -- clean tsc babel rollup"
+    "tsc": "tsc --outDir dist/es7",
+    "babel": "babel --out-dir dist/es5 dist/es7",
+    "rollup": "rollup -c --input dist/es7/app.js",
+    "rollup-es5": "rollup -c --input dist/es5/app.js",
+    "build": "npm run series clean tsc rollup",
+    "build-ie": "npm run series clean tsc babel rollup-es5"
   },
   "author": "Isao Yagi <isao.yagi@gmail.com>",
   "license": "ISC",
@@ -18,11 +21,8 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "rollup": "^0.66.2",
-    "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-typescript": "^1.0.0",
-    "tslib": "^1.9.3",
     "typescript": "^3.1.1"
   },
   "dependencies": {

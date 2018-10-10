@@ -1,8 +1,16 @@
 # Hello World (Preact, TypeScript, Babel, and Rollup)
 
-This is an example of compiling a Preact component and including it in an HTML page. Build with:
+This is an example of compiling a Preact component and including it in an HTML page. 
+
+Developer builds ES2016/ES7:
 
     npm run build
+
+Build with IE 11 support with polyfills:
+
+    npm run build-ie
+
+Status:
 
 - [x] Typescript
 - [x] Babel
@@ -12,7 +20,7 @@ This is an example of compiling a Preact component and including it in an HTML p
     - [ ] Closure elimination
 - [x] Rollup
   - [ ] Common code in separate chunk
-- [ ] Sourcemap
+- [-] Sourcemap (shows es7 or es5, not src/*.tsx)
 - [ ] Minification
 - [ ] Efficient/fast
 
@@ -20,7 +28,7 @@ This is an example of compiling a Preact component and including it in an HTML p
 
 TypeScript configuration is in `tsconfig.json`, reference info [here](http://www.typescriptlang.org/docs/handbook/compiler-options.html). Usage:
 
-- `"target": "esnext"` says do not transpile the Javascript, since we'll use Babel for this.
+- `"target": "es2016"` only transpile code that is not supported on Chrome, iOS, Edge, Safari, or FF.
 - `"module": "es2015",` says our modules are ES2015 (not CommonJS, SystemJS, etc).
 - `"jsx": "react",` says we have markup inlined in the code, and it should be transformed for the browser.
 - `"jsxFactory": "h",` specifies the function name to use for the JSX transformations. Must set to "h" for Preact.

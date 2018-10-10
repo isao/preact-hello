@@ -3,11 +3,11 @@ import commonjs from 'rollup-plugin-commonjs'
 import {name} from './package.json'
 
 export default {
-    input: './dist/babel/app.js',
+    input: './dist/es7/app.js',  // See also package.json scripts.rollup
     output: {
         file: `dist/${name}.js`,
         format: 'esm',
-        sourceMap: true,
+        sourcemap: true,
     },
     plugins: [
         resolve(),
