@@ -1,4 +1,5 @@
 import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
 import {name} from './package.json'
 
 export default {
@@ -6,9 +7,10 @@ export default {
     output: {
         file: `dist/${name}.js`,
         format: 'esm',
-        sourcemap: true,
+        sourceMap: true,
     },
     plugins: [
         resolve(),
+        commonjs(),
     ],
 }
