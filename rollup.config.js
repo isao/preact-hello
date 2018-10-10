@@ -1,16 +1,20 @@
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
-import {name} from './package.json'
+import typescript from 'rollup-plugin-typescript'
+import babel from 'rollup-plugin-babel';
+import {name, babel as babelrc} from './package.json'
 
 export default {
-    input: './dist/babel/app.js',
+    input: './src/app.tsx',
     output: {
         file: `dist/${name}.js`,
         format: 'esm',
-        sourceMap: true,
+        sourcemap: true,
     },
     plugins: [
         resolve(),
         commonjs(),
+        typescript(),
+        babel(babelrc),
     ],
 }

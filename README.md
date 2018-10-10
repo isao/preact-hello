@@ -6,13 +6,13 @@ This is an example of compiling a Preact component and including it in an HTML p
 
 - [x] Typescript
 - [x] Babel
-    - [x] Browserlist-based transpilation
-    - [x] Browserlist-based Polyfill
+    - [!] Browserlist-based transpilation NOT WORKING!?
+    - [!] Browserlist-based Polyfill NOT WORKING!?
     - [ ] Tail call optimization
     - [ ] Closure elimination
 - [x] Rollup
   - [ ] Common code in separate chunk
-- [ ] Sourcemap
+- [x] Sourcemap: working but Rollup warns "(!) Broken sourcemap"
 - [ ] Minification
 - [ ] Efficient/fast
 
